@@ -19,11 +19,18 @@ void loop()
       CircuitPlayground.setPixelColor(pixel, COLOR);
       wasPressed = true;
       delay(50);
-  } 
+      pixel = (pixel + 1) % 10;
+  }
+  else if(CircuitPlayground.rightButton() && !wasPressed) 
+  {
+      CircuitPlayground.setPixelColor(pixel, COLOR);
+      wasPressed = true;
+      delay(50);
+      pixel = (pixel + 9 ) % 10;
+  }  
   else 
   {
       CircuitPlayground.clearPixels();
-      pixel = (pixel + 1) % 10;
       wasPressed = false;
   }
 }
