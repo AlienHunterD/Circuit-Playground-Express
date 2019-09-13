@@ -2,7 +2,7 @@
 #include <Adafruit_CircuitPlayground.h>
 #define COLOR         0x31b784
 #define LOW_LIMIT     10    // The "fastest" delay time
-#define HIGH_LIMIT    150   // The "slowest" delay time
+#define HIGH_LIMIT    200   // The "slowest" delay time
  
 int pixel1;   // The location of the first pixel to light
 int pixel2;   // The location of the second pixel to light
@@ -16,7 +16,7 @@ void setup()
   CircuitPlayground.begin();
   
   // Set a medium brightness
-  CircuitPlayground.setBrightness(128);
+  CircuitPlayground.setBrightness(64);
  
   // Select two pixels as the starting locations
   pixel1 = 0;
@@ -38,8 +38,16 @@ void loop() {
   CircuitPlayground.setPixelColor(pixel2, COLOR);
  
   // Increment the pixels so that they apppear to "move" around the board
-  pixel1 = (pixel1 + 1) % 10;
-  pixel2 = (pixel2 + 1) % 10;
+  if (CircuitPlayground.slideSwitch())
+  {
+    pixel1 = (pixel1 + 1) % 10;
+    pixel2 = (pixel2 + 1) % 10;
+  }
+  else
+  {
+    pixel1 = (pixel1 + 9) % 10;
+    pixel2 = (pixel2 + 9) % 10;
+  }
  
   delay(pause_time); // pause for just a moment
   
