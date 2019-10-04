@@ -31,7 +31,7 @@ void setup()
 ///////////////////////////////////////////////////////////////////////////////
 void loop() {
   // Turn off all the pixels
-  CircuitPlayground.clearPixels();
+  CircuitPlayground.clearPixels(); 
  
   // Turn on two pixels and set them to the COLOR value
   CircuitPlayground.setPixelColor(pixel1, COLOR);
